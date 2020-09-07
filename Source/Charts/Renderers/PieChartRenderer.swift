@@ -276,7 +276,19 @@ open class PieChartRenderer: DataRenderer
 
             context.beginPath()
             context.addPath(path)
-            context.fillPath(using: .evenOdd)
+            
+            context.saveGState()
+            let _gradient = dataSet.gradient(atIndex: j)
+            let box = path.boundingBoxOfPath
+            let startPoint: CGPoint = .init(x: 0, y: box.minY)
+            let endPoint: CGPoint = .init(x: 0, y: box.maxY)
+            context.clip(using: .evenOdd)
+            context.drawLinearGradient(_gradient,
+                start: startPoint,
+                end: endPoint,
+                options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
+            )
+            context.restoreGState()
 
             let axElement = createAccessibleElement(withIndex: j,
                                                     container: chart,
