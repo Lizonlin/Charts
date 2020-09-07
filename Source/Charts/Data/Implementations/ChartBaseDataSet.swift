@@ -189,6 +189,9 @@ open class ChartBaseDataSet: NSObject, IChartDataSet, NSCopying
     /// Colors are reused as soon as the number of Entries the DataSet represents is higher than the size of the colors array.
     open var colors = [NSUIColor]()
     
+    /// POKA Gradients
+    open var gradients = [CGGradient]()
+    
     /// List representing all colors that are used for drawing the actual values for this DataSet
     open var valueColors = [NSUIColor]()
 
@@ -208,6 +211,17 @@ open class ChartBaseDataSet: NSObject, IChartDataSet, NSCopying
             index = 0
         }
         return colors[index % colors.count]
+    }
+    
+    /// POKA Gradient
+    open func gradient(atIndex index: Int) -> CGGradient
+    {
+        var index = index
+        if index < 0
+        {
+            index = 0
+        }
+        return gradients[index % gradients.count]
     }
     
     /// Resets all colors of this DataSet and recreates the colors array.
