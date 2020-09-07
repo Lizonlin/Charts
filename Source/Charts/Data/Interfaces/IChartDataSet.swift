@@ -183,6 +183,12 @@ public protocol IChartDataSet
     /// This prevents out-of-bounds by performing a modulus on the color index, so colours will repeat themselves.
     func color(atIndex: Int) -> NSUIColor
     
+    /// POKA Gradients
+    var gradients: [CGGradient] { get }
+    
+    /// POKA Gradient
+    func gradient(atIndex index: Int) -> CGGradient
+    
     func resetColors()
     
     func addColor(_ color: NSUIColor)
