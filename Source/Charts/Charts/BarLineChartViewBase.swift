@@ -889,7 +889,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         {
             let velocity = _panGestureRecognizer.velocity(in: self)
             print(velocity.x)
-            if _data === nil || !isDragEnabled || abs(velocity.x) > 1000 ||
+            if _data === nil || !isDragEnabled || abs(velocity.x) > 500 ||
                 (self.hasNoDragOffset && self.isFullyZoomedOut && !self.isHighlightPerDragEnabled) ||
                 (!_dragYEnabled && abs(velocity.y) > abs(velocity.x)) ||
                 (!_dragXEnabled && abs(velocity.y) < abs(velocity.x))
