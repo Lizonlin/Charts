@@ -891,8 +891,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
             if _data === nil || !isDragEnabled ||
                 (self.hasNoDragOffset && self.isFullyZoomedOut && !self.isHighlightPerDragEnabled) ||
                 (!_dragYEnabled && abs(velocity.y) > abs(velocity.x)) ||
-                (!_dragXEnabled && abs(velocity.y) < abs(velocity.x)) ||
-                (abs(velocity.x) > 1000)
+                (!_dragXEnabled && abs(velocity.y) < abs(velocity.x)) && abs(velocity.x) > 1000
             {
                 return false
             }
